@@ -4,8 +4,8 @@
 # git checkout 1.7.0
 # docker build -t sequenceiq/ambari:1.7.0 ./ambari-server/
 
-FROM sequenceiq/dnsmasq:pam-fix
-MAINTAINER SequenceIQ
+FROM gerencio/docker-dnsmasq
+MAINTAINER Gerencio
 
 ADD ambari.repo /etc/yum.repos.d/
 RUN yum install -y ambari-server ambari-agent
@@ -16,8 +16,8 @@ ADD serf /usr/local/serf
 
 # instead of starting the docker file FROM sequenceiq/ssh:
 RUN yum install -y curl
-RUN curl -L https://api.github.com/repos/sequenceiq/docker-ssh/tarball/master|tar -xz -C /usr/local/serf --strip-components=2 --touch \*/serf
-RUN curl -L https://raw.githubusercontent.com/sequenceiq/docker-ssh/master/install-ssh.sh | bash
+RUN curl -L https://api.github.com/repos/gerencio/docker-ssh/tarball/master|tar -xz -C /usr/local/serf --strip-components=2 --touch \*/serf
+RUN curl -L https://raw.githubusercontent.com/gerencio/docker-ssh/master/install-ssh.sh | bash
 
 # fix annoying PAM error 'couldnt open session'
 RUN sed -i "/pam_limits/ s/^/#/" /etc/pam.d/*
