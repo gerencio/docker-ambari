@@ -1,6 +1,6 @@
 :<<USAGE
 ########################################
-curl -Lo .amb j.mp/docker-ambari && . .amb
+curl -Lo .amb http://bit.ly/1npUm9T && . .amb
 ########################################
 
 full documentation: https://github.com/gerencio/docker-ambari
