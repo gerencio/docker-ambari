@@ -3,20 +3,20 @@
 curl -Lo .amb j.mp/docker-ambari && . .amb
 ########################################
 
-full documentation: https://github.com/sequenceiq/docker-ambari
+full documentation: https://github.com/gerencio/docker-ambari
 USAGE
 
 : ${NODE_PREFIX=amb}
 : ${AMBARI_SERVER_NAME:=${NODE_PREFIX}-server}
-: ${IMAGE:="sequenceiq/ambari:2.2.0-v1"}
+: ${IMAGE:="gerencio/docker-ambari:2.2.0-kylin"}
 : ${DOCKER_OPTS:=""}
 : ${CONSUL:="${NODE_PREFIX}-consul"}
-: ${CONSUL_IMAGE:="sequenceiq/consul:v0.5.0-v6"}
+: ${CONSUL_IMAGE:="gerencio/docker-consul:v0.5.0-v6"}
 : ${CLUSTER_SIZE:=3}
 : ${DEBUG:=1}
 : ${SLEEP_TIME:=2}
 : ${DNS_PORT:=53}
-: ${EXPOSE_DNS:=false}
+: ${EXPOSE_DNS:=true}
 : ${DRY_RUN:=false}
 
 run-command() {
