@@ -1,7 +1,7 @@
 # Ambari on Docker
 
-[![DockerPulls](https://img.shields.io/docker/pulls/sequenceiq/ambari.svg)](https://registry.hub.docker.com/u/gerencio/docker-ambari/)
-[![DockerStars](https://img.shields.io/docker/stars/sequenceiq/ambari.svg)](https://registry.hub.docker.com/u/gerencio/docker-ambari/)
+[![DockerPulls](https://img.shields.io/docker/pulls/gerencio/docker-ambari.svg)](https://registry.hub.docker.com/u/gerencio/docker-ambari/)
+[![DockerStars](https://img.shields.io/docker/stars/gerencio/docker-ambari.svg)](https://registry.hub.docker.com/u/gerencio/docker-ambari/)
 
 
 This projects aim is to help you to get started with ambari. The 2 easiest way
