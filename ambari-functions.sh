@@ -144,9 +144,9 @@ amb-start-cluster-kylin() {
   done
 
   #last node for kylin service
-  [ $act_cluster_size -gt 2 ]; do
+  if [ $act_cluster_size -gt 2 ]; then 
     amb-start-node-kylin $act_cluster_size -1
-  done
+  fi
 }
 
 
