@@ -295,12 +295,6 @@ amb-remove-node() {
 amb-start-kylin() {
   get-ambari-server-ip
   : ${AMBARI_SERVER_IP:?"AMBARI_SERVER_IP is needed"}
-  if [[ $# -eq 0 ]]; then
-    MORE_OPTIONS="-d"
-  else
-    shift
-    MORE_OPTIONS="$@"
-  fi
 
   local mount_command=""
   if [[ "$MOUNT_POINT" != "" ]]; then
@@ -308,7 +302,7 @@ amb-start-kylin() {
   fi
 
 
-  run-command docker run $MORE_OPTIONS $mount_command -p 7070:7070  -e BRIDGE_IP=$(get-consul-ip) $DOCKER_OPTS --name $KYLIN -h $KYLIN.service.consul $KYLIN_IMAGE /start-agent
+  run-command docker run -d $mount_command -p 7070:7070  -e BRIDGE_IP=$(get-consul-ip) $DOCKER_OPTS --name $KYLIN -h $KYLIN.service.consul $KYLIN_IMAGE /start-agent
 
   _consul-register-service $KYLIN $(get-kylin-ip)
 }
