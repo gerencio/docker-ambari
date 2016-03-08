@@ -101,14 +101,17 @@ ADD ambari-views-utils-fixed-wasb.jar /tmp/wasb/WEB-INF/lib/
 ADD azure-storage-2.2.0.jar /tmp/wasb/WEB-INF/lib/
 ADD hadoop-azure-2.7.1.jar /tmp/wasb/WEB-INF/lib/
 RUN cd /tmp/wasb/WEB-INF/lib/ && mv ambari-views-utils-fixed-wasb.jar $(jar tf /var/lib/ambari-server/resources/views/files-*.jar | grep ambari-view | cut -d "/" -f 3)
-RUN cd /tmp/wasb && jar -uf /var/lib/ambari-server/resources/views/files*.jar WEB-INF/lib/*.jar
-RUN cd /tmp/wasb && jar -uf /var/lib/ambari-server/resources/views/hive*.jar WEB-INF/lib/*.jar
-RUN cd /tmp/wasb && jar -uf /var/lib/ambari-server/resources/views/pig*.jar WEB-INF/lib/*.jar
-RUN cd /tmp/wasb && jar -uf /var/lib/ambari-server/resources/views/slider*.jar WEB-INF/lib/*.jar
+RUN cd /tmp/wasb && jar -uf /var/lib/ambari-server/resources/views/files*.jar WEB-INF/lib/*.jar \ 
+&& cd /tmp/wasb && jar -uf /var/lib/ambari-server/resources/views/hive*.jar WEB-INF/lib/*.jar \ 
+&& cd /tmp/wasb && jar -uf /var/lib/ambari-server/resources/views/pig*.jar WEB-INF/lib/*.jar \ 
+&& cd /tmp/wasb && jar -uf /var/lib/ambari-server/resources/views/slider*.jar WEB-INF/lib/*.jar
 
 # Add jars from packer image
 ADD dash-azure-storage-2.2.0.jar /usr/lib/hadoop/lib/
 ADD gcs-connector-latest-hadoop2.jar /usr/lib/hadoop/lib/
+
+
+
 
 ENV PS1 "[\u@docker-ambari \W]# "
 
