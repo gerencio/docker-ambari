@@ -1,5 +1,5 @@
 # Creates an Ambari Server base on vanilla centos
-FROM centos:6.6
+FROM gerencio/docker-serf
 MAINTAINER Gerencio
 
 ADD ambari.repo /etc/yum.repos.d/
