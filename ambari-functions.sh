@@ -9,7 +9,7 @@ USAGE
 : ${NODE_PREFIX=amb}
 : ${AMBARI_SERVER_NAME:=${NODE_PREFIX}-server}
 : ${IMAGE:="gerencio/docker-ambari:2.2.0-kylin"}
-: ${KYLIN:=${NODE_PREFIX}-kylin}
+: ${KYLIN:=kylin}
 : ${KYLIN_IMAGE:="gerencio/docker-ambari-kylin:2.2.0-kylin-1.2.0"}
 : ${DOCKER_OPTS:=""}
 : ${CONSUL:=${NODE_PREFIX}-consul}
@@ -41,15 +41,15 @@ amb-clean-nodes() {
 }
 
 amb-clean-kylin() {
-  _consul-deregister-service ${NODE_PREFIX}-kylin $(get-consul-ip)
-  docker stop ${NODE_PREFIX}-kylin
-  docker rm ${NODE_PREFIX}-kylin
+  _consul-deregister-service $KYLIN $(get-kylin-ip)
+  docker stop $KYLIN
+  docker rm $KYLIN
 }
 
 amb-clean-consul(){
   _consul-deregister-service ${NODE_PREFIX}-consul $(get-consul-ip)
-  docker stop ${NODE_PREFIX}-consul
-  docker rm ${NODE_PREFIX}-consul
+  docker stop $CONSUL
+  docker rm $CONSUL
 
 }
 
