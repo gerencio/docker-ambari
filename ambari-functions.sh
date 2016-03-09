@@ -301,8 +301,8 @@ amb-start-kylin() {
      mount_command="-v $MOUNT_POINT/${NODE_PREFIX}-kylin:/tmp"
   fi
 
-
-  run-command docker run -d $mount_command -p 7070:7070  -e BRIDGE_IP=$(get-consul-ip) $DOCKER_OPTS --name $KYLIN -h $KYLIN.service.consul $KYLIN_IMAGE -c "/start-agent && /usr/local/serf/bin/start-serf-agent.sh"
+  run-command docker run -d $mount_command -p 7070:7070  -e BRIDGE_IP=$(get-consul-ip) $DOCKER_OPTS --name $KYLIN -h $KYLIN.service.consul $KYLIN_IMAGE  /start-agent 
+  run-command docker exec -d $KYLIN /usr/local/serf/bin/start-serf-agent.sh
 
   _consul-register-service $KYLIN $(get-kylin-ip)
 }
