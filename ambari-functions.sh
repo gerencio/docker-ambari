@@ -56,8 +56,8 @@ amb-clean-consul(){
 
 amb-clean-all() {
   amb-clean-nodes
-  amb-clean-consul
   amb-clean-kylin
+  amb-clean-consul
 }
 
 amb-unset-env() {
@@ -302,7 +302,7 @@ amb-start-kylin() {
   fi
 
 
-  run-command docker run -d $mount_command -p 7070:7070  -e BRIDGE_IP=$(get-consul-ip) $DOCKER_OPTS --name $KYLIN -h $KYLIN.service.consul $KYLIN_IMAGE /start-agent
+  run-command docker run -d $mount_command -p 7070:7070  -e BRIDGE_IP=$(get-consul-ip) $DOCKER_OPTS --name $KYLIN -h $KYLIN.service.consul $KYLIN_IMAGE -c "/start-agent && /usr/local/serf/bin/start-serf-agent.sh"
 
   _consul-register-service $KYLIN $(get-kylin-ip)
 }
